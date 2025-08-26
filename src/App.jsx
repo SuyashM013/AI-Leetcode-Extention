@@ -69,6 +69,7 @@ function App() {
       }
     } catch (err) {
       setLoading(false);
+      alert("Error generating answer, Try again!");
       console.error("Error generating answer:", err);
     }
   };
