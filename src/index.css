@@ -1,1 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Delius&family=Smooch+Sans&display=swap');
 @import "tailwindcss";
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.smooch-sans-regular {
+  font-family: "Smooch Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.delius-regular {
+  font-family: "Delius", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
