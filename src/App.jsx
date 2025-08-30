@@ -53,7 +53,7 @@ function App() {
       });
 
       setLoading(false);
-      setQuestion('');
+      // setQuestion('');
 
       const MockJsonResp = res.text.replace('```json', '').replace('```', '');
       const parsedAns = JSON.parse(MockJsonResp);
@@ -63,7 +63,7 @@ function App() {
       // 🔹 Save result into chrome storage
       // chrome.storage.local.set({ ans: parsedAns });
       if (typeof chrome !== "undefined" && chrome.storage) {
-        chrome.storage.local.set({ ans: parsedAns  });
+        chrome.storage.local.set({ ans: parsedAns });
       } else {
         alert("Chrome storage not available (probably running in dev).");
       }
@@ -76,7 +76,7 @@ function App() {
 
   const resetData = () => {
     // setApi('');
-    // setQuestion('');
+    setQuestion('');
     // setAns({});
 
     if (typeof chrome !== "undefined" && chrome.storage) {
@@ -91,7 +91,7 @@ function App() {
   }
 
   return (
-    <div className="w-full h-full bg-zinc-900 text-white">
+    <div className="w-full min-h-screen bg-zinc-900 text-white">
       <div className="flex flex-col justify-center items-center p-5 ">
         <h1 className="text-5xl bebas-neue-regular text-center text-orange-400 ">
           Leetcode AI Documentation
@@ -141,7 +141,7 @@ function App() {
 
       </div>
 
-      {/* Loader */}
+      {/* Loader  */}
       {loading && (
         <div className="flex justify-center items-center">
           <div className="animate-spin w-15 h-15">
@@ -173,15 +173,33 @@ function App() {
 
           <div className="mb-4">
             <h2 className="text-2xl inline text-orange-400">Approach : </h2>
-            {Array.isArray(ans.approach) ? (
+            {/* {Array.isArray(ans.approach) ? (
               ans.approach.map((item, index) => (
                 <p key={index} className="delius-regular">
                   <span>{index + 1}.</span> {item}
                 </p>
               ))
             ) : (
-              <p className="delius-regular">{typeof ans === "string" ? ans : ans.approach}</p>
+              <p className="delius-regular">{typeof ans.approach === "string" ? ans : ans.approach}</p>
+            )} */}
+
+            {Array.isArray(ans?.approach) ? (
+              ans.approach.map((item, index) => (
+                <p key={index} className="delius-regular">
+                  <span>{index + 1}.</span> {String(item)}
+                </p>
+              ))
+            ) : typeof ans?.approach === "string" ? (
+              <p className="delius-regular">{ans.approach}</p>
+            ) : typeof ans?.approach === "object" && ans.approach !== null ? (
+              <pre className="delius-regular bg-gray-800 text-white p-2 rounded">
+                {JSON.stringify(ans.approach, null, 2)}
+              </pre>
+            ) : (
+              <p className="delius-regular text-gray-400 italic">No approach available</p>
             )}
+
+
           </div>
 
           <div className="mb-4">
