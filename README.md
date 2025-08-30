@@ -17,6 +17,18 @@ It smartly integrates with LeetCode problem pages and opens a **side panel** for
 
 ---
 
+##  📸  Images - Extention in Action 
+
+![Extension Preview](./src/assets/pic_2.png)
+
+![Notification Popup](./src/assets/pic_3.png)
+
+![Extension Features](./src/assets/pic_1.png)
+
+
+
+---
+
 ## 🛠️ Tech Stack  
 - **React + Vite** (for UI)  
 - **Tailwind CSS** (for styling)  
